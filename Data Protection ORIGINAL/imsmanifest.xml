@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest identifier="_6JkCSyqmKhn_course_id" version="1.0" xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>1.2</schemaversion>
+    <lom xmlns="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd">
+      <general>
+        <title>
+          <langstring xml:lang="x-none">Security Essentials: Data Protection</langstring>
+        </title>
+      </general>
+      <lifecycle>
+        <version>
+          <langstring xml:lang="x-none">1</langstring>
+        </version>
+        <status>
+          <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+          </source>
+          <value>
+            <langstring xml:lang="x-none">Final</langstring>
+          </value>
+        </status>
+      </lifecycle>
+      <metametadata>
+        <metadatascheme>ADL SCORM 1.2</metadatascheme>
+      </metametadata>
+      <educational>
+        <typicallearningtime>
+          <datetime>PT0H0M0S</datetime>
+        </typicallearningtime>
+      </educational>
+      <rights>
+        <cost>
+          <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+          </source>
+          <value>
+            <langstring xml:lang="x-none">yes</langstring>
+          </value>
+        </cost>
+        <copyrightandotherrestrictions>
+          <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+          </source>
+          <value>
+            <langstring xml:lang="x-none">yes</langstring>
+          </value>
+        </copyrightandotherrestrictions>
+      </rights>
+    </lom>
+  </metadata>
+  <organizations default="Security_Essentials:_Data_Protection_ORG">
+    <organization identifier="Security_Essentials:_Data_Protection_ORG">
+      <title>Security Essentials: Data Protection</title>
+      <item identifier="Stage2-Batch1_SCO" isvisible="true" identifierref="__6JkCSyqmKhn_course_id_RES">
+        <title>Security Essentials: Data Protection</title>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="__6JkCSyqmKhn_course_id_RES" type="webcontent" href="index_lms.html" adlcp:scormtype="sco">
+      <file href="story_content/thumbnail.jpg" />
+      <file href="mobile/6JpIfjav2dY.png" />
+      <file href="mobile/6DGNDbF2sAV.png" />
+      <file href="mobile/6FIQb2XWiwW.png" />
+      <file href="mobile/6OInzl4rvju.png" />
+      <file href="mobile/6XFyISSlAbP.png" />
+      <file href="mobile/5sJAur0HufA.png" />
+      <file href="mobile/6f6eOjOx65g.png" />
+      <file href="mobile/5rKS34d9sPm.png" />
+      <file href="mobile/69Yp5c92rse.png" />
+      <file href="mobile/5lSBBCI6xuP_M_82_82.png" />
+      <file href="mobile/6OwrkgDQLBD_M_92_92.png" />
+      <file href="mobile/5hf5cYGjGe7.png" />
+      <file href="mobile/6kiUeNdO19Q_M_172_172.png" />
+      <file href="mobile/6R9jN68Da0y.png" />
+      <file href="mobile/5oCKRLG9P4Y.png" />
+      <file href="mobile/6WA6xIVFutj.png" />
+      <file href="mobile/6bV46hdct5Y.png" />
+      <file href="meta.xml" />
+      <file href="story_content/user.js" />
+      <file href="html5/data/css/output.min.css" />
+      <file href="html5/data/js/5fD7xN9RwnY.js" />
+      <file href="html5/data/js/5gtSq5v1GMY.js" />
+      <file href="html5/data/js/66l8q33Zejj.js" />
+      <file href="html5/data/js/6bumMfaUZPr.js" />
+      <file href="html5/data/js/6c6Em3kXQDP.js" />
+      <file href="html5/data/js/6cMkwKOzMzX.js" />
+      <file href="html5/data/js/6LEja8iJiDn.js" />
+      <file href="html5/data/js/6NIt5J36wVJ.js" />
+      <file href="html5/data/js/6O5TcjFNWmi.js" />
+      <file href="html5/data/js/data.js" />
+      <file href="html5/data/js/frame.js" />
+      <file href="html5/data/js/paths.js" />
+      <file href="html5/lib/hls/hls.min.js" />
+      <file href="html5/lib/scripts/bootstrapper.min.js" />
+      <file href="html5/lib/scripts/frame.desktop.min.js" />
+      <file href="html5/lib/scripts/frame.mobile.min.js" />
+      <file href="html5/lib/scripts/slides.min.js" />
+      <file href="html5/lib/stylesheets/desktop.min.css" />
+      <file href="html5/lib/stylesheets/mobile.min.css" />
+      <file href="html5/lib/stylesheets/mobile-fonts/open-sans-bold.woff" />
+      <file href="html5/lib/stylesheets/mobile-fonts/open-sans-light.woff" />
+      <file href="html5/lib/stylesheets/mobile-fonts/open-sans-regular.woff" />
+      <file href="analytics-frame.html" />
+      <file href="story.html" />
+      <file href="index_lms.html" />
+      <file href="lms/AICCComm.html" />
+      <file href="lms/blank.html" />
+      <file href="lms/browsersniff.js" />
+      <file href="lms/goodbye.html" />
+      <file href="lms/scormdriver.js" />
+    </resource>
+  </resources>
+</manifest>
