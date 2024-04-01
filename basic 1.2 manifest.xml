@@ -17,7 +17,7 @@ The XSD files for SCORM 1.2 are not strictly valid and may cause errors in some 
 <!-- 
   The metadata node simply declares which SCORM version this course operates under.
   In SCORM 1.2 there isn't a controlled vocabulary for schemaversion, it can be any value
-  but a descriptive value is preferred.
+  but a descriptive value is preferred. ADDED FOR PUSH.
    -->
 <metadata>
 <schema>ADL SCORM</schema>
