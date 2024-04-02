@@ -33,7 +33,7 @@ or by completing the entire course and passing the post test.
     <schemaversion>2004 3rd Edition</schemaversion>
   </metadata>
 
-  <organizations default="Security Essentials - Protecting Data">
+  <organizations default="protecting_data_org">
 
     <organization identifier= "protecting_data_org" adlseq:objectivesGlobalToSystem="false">
       <title>Security Essentials: Protecting Data</title>
