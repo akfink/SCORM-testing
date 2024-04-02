@@ -91,11 +91,11 @@
 
         <imsss:sequencing>
           <imsss:rollupRules>
-            <imsss:rollupRule minimumCount=”1″>
+            <imsss:rollupRule minimumCount="1">
               <imsss:rollupConditions>
-                <imsss:rollupCondition condition=”satisfied”/>
+                <imsss:rollupCondition condition="satisfied"/>
               </imsss:rollupConditions>
-                <imsss:rollupAction action=”completed”/>
+                <imsss:rollupAction action="completed"/>
             </imsss:rollupRule>
           </imsss:rollupRules>
        
