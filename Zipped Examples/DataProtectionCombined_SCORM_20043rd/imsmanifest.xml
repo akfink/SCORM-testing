@@ -50,20 +50,22 @@
     <organization identifier="Security_Essentials:_Data_Protection_ORG" adlseq:objectivesGlobalToSystem="false">
       <title>Security Essentials: Data Protection MASTER</title>
       
-      <item identifier="Data Protection" identifierref="dpmaster">
+      <item identifier="Data Protection" identifierref="course">
         <title>Data Protection Course</title>
           
-          <item identifier="Assessment" identifierref="assess">
+          <item identifier="Assessment" identifierref="assess_REF">
             <title>Assessment</title>
             <imsss:sequencing>
               <imsss:limitConditions attemptLimit="1"/>
               <imsss:objectives>
-                <imsss:primaryObjective objectiveID="assessment_satisfied"/>
+                <imsss:primaryObjective objectiveID="assessment_satisfied"/ >
+                  <imsss:mapInfo targetObjectiveID = "course_satisfied" readSatisfiedStatus = "true" writeSatisfiedStatus = "true"/>
+                </imsss:primaryObjective>
               </imsss:objectives>
             </imsss:sequencing>
           </item>
 
-          <item identifier="Course" identifierref="__6JkCSyqmKhn_course_id_RES">
+          <item identifier="Course" identifierref="course_RES">
             <title>Security Essentials: Data Protection</title>
 
             <imsss:sequencing>
@@ -84,7 +86,9 @@
                 </imsss:preConditionRule>
               </imsss:sequencingRules>
                 <imsss:objectives>
-                  <imsss:primaryObjective objectiveID="course_satisfied"/>
+                  <imsss:Objective objectiveID="course_satisfied"/>
+                  <imsss:mapInfo targetObjectiveID = "course_satisfied" 
+                  readSatisfiedStatus = "true" writeSatisfiedStatus = "true"/>
                 </imsss:objectives>
             </imsss:sequencing>
           </item>
@@ -107,7 +111,7 @@
   </organizations>
 
   <resources>
-    <resource identifier="__6bbpm48BpJA_course_id_RES" type="webcontent"
+    <resource identifier="assess_RES" type="webcontent"
             href="assess/index_wrapper.html?locale=en-us" adlcp:scormType="sco">
             <file href="assess/story_content/thumbnail.jpg"></file>
             <file href="assess/mobile/6M2qhOGbTuH.png"></file>
@@ -148,7 +152,7 @@
             <file href="assess/lms/goodbye.html"></file>
             <file href="assess/lms/scormdriver.js"></file>
         </resource>
-        <resource identifier="__6JkCSyqmKhn_course_id_RES" type="webcontent" href="course/index_lms.html" adlcp:scormType="sco">
+        <resource identifier="course_RES" type="webcontent" href="course/index_lms.html" adlcp:scormType="sco">
           <file href="course/story_content/thumbnail.jpg" />
           <file href="course/mobile/6JpIfjav2dY.png" />
           <file href="course/mobile/6DGNDbF2sAV.png" />
