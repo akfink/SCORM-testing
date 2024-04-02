@@ -1,24 +1,3 @@
-<?xml version="1.0" standalone="no" ?>
-<!--
-Sequencing example demonstrating forced sequential order. SCORM 2004 3rd Edition.
-
-Provided by Rustici Software - http://www.scorm.com
-
-Sequencing Strategy:
-This example demonstrates a sequencing strategy that requires the learner
-to visit the SCOs in order. Once a SCO has been visited, the learner can
-jump backwards to review material, but the learner can not jump ahead beyond
-the next SCO.
-
-Rollup Strategy:
-Completion: All activities must be completed
-Satisfaction: All activities must be satisfied (activities without assessment are satisfied upon being completed)
-Score: No score is rolled up (all activities have objective measure weight = 0)
-
-This example also demonstrates using a sequencing collection to define sequencing rules
-that are common to every item.
--->
-
 <manifest identifier="data.security.combined.20043rd" version="1"
           xmlns="http://www.imsglobal.org/xsd/imscp_v1p1"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -66,94 +45,66 @@ that are common to every item.
     </lom>
 
   </metadata>
-  
-  <organizations default="Security_Essentials:_Data_Protection_ORG">
 
-    <!-- Since we're using global objectives, make sure to set them to not be global to system-->
+  <organizations default="Security_Essentials:_Data_Protection_ORG"> 
     <organization identifier="Security_Essentials:_Data_Protection_ORG" adlseq:objectivesGlobalToSystem="false">
       <title>Security Essentials: Data Protection MASTER</title>
-
-      <item identifier="The_Problem_with_Public_Wi-Fi_Assessment_SCO" isvisible="true"
-      identifierref="__6bbpm48BpJA_course_id_RES">
-      <title>Security Essentials: Data Protection Adaptive Learning Assessment</title>
-<!-- Does this go here? Or after sequencing? -->
-      <adlcp:masteryscore>100</adlcp:masteryscore>
-        
-        <imsss:sequencing>
-            <imsss:postConditionRule>
-              <imsss.ruleConditions>
-                <imsss:ruleCondition referencedObjective="assessment_satisfied" condition="satisfied"/>
-              </imsss.ruleConditions>
-              <imsss:ruleAction action="exit all"/>
-            </imsss:postConditionRule>
-        
-        
-          <imsss:objectives>
-            <!--
-            Each SCO has a global objective to that can be read by other SCOs to see if it is completed.
-            This global will be satisfied when the activity is satisfied since it is associated with the
-            primary objective
-            -->
-            <imsss:primaryObjective objectiveID="assessment_satisfied"/>
-          </imsss:objectives>
-        </imsss:sequencing>
-
-        <imsss:rollupRules rollupObjectiveSatisfied="true" rollupProgressCompletion="true" objectiveMeasureWeight="1"></imsss:rollupRules>
-
-      </item>
-
-      <item identifier="Stage2-Batch1_SCO" identifierref="__6JkCSyqmKhn_course_id_RES">
-        <title>Security Essentials: Data Protection</title>
-        
-        <imsss:sequencing IDRef="common_seq_rules">
-        
-          <imsss:sequencingRules>
-
-            <imsss:preConditionRule>
-              
-              <!--  
-              If the previous SCO is not satisfied or the status is unknown, disable this SCO.
-              Notice that the "not" operator isn't a logical NOT in which all other conditions evaluate
-              to true. Instead it indicates that "not satisfied" is the only condition that evaluates to true.
-              -->
-              <imsss:ruleConditions conditionCombination="any">
-                <imsss:ruleCondition referencedObjective="course_satisfied" condition="satisfied"/>
-              </imsss:ruleConditions>
-            
-              <!--  'Disabled' will cause the SCO to be visible in the course tree, but not accessible via choice or flow.  -->
-              <imsss:ruleAction action="disabled"/>
-            
-            </imsss:preConditionRule>
-            
-          </imsss:sequencingRules>
-
-          <imsss:objectives>
-            <imsss:primaryObjective objectiveID="course_satisfied">
-              <imsss:mapInfo targetObjectiveID = "global_assessment_satisfied" 
-                             readSatisfiedStatus = "true" writeSatisfiedStatus = "true"/>
-            </imsss:primaryObjective>
-            
-            <!--
-            Set up another objective to read the status of this activity's prerequisite. We can then use this objective in
-            our sequencing rules to disable this activity.
-            -->
-            <imsss:objective objectiveID="previous_sco_satisfied">
-              <imsss:mapInfo targetObjectiveID="global_assessment_satisfied" 
-                             readSatisfiedStatus="true" writeSatisfiedStatus="false"/>
-            </imsss:objective>
-            
-          </imsss:objectives>
-        </imsss:sequencing>
-      </item>
       
+      <item identifier="Data Protection" identifierref="dpmaster">
+        <title>Data Protection Course</title>
+          
+          <item identifier="Assessment" identifierref="assess">
+            <title>Assessment</title>
+            <imsss:sequencing>
+              <imsss:limitConditions attemptLimit="1"/>
+              <imsss:objectives>
+                <imsss:primaryObjective objectiveID="assessment_satisfied"/>
+              </imsss:objectives>
+            </imsss:sequencing>
+          </item>
 
-      <imsss:sequencing>
-        <imsss:controlMode choice="false" flow="true"/>
-      </imsss:sequencing>
+          <item identifier="Course" identifierref="__6JkCSyqmKhn_course_id_RES">
+            <title>Security Essentials: Data Protection</title>
+
+            <imsss:sequencing>
+              <imsss:sequencingRules>
+                <imsss:preConditionRule>
+                  <!--  
+                    If the previous SCO is not satisfied or the status is unknown, disable this SCO.
+                    Notice that the "not" operator isn't a logical NOT in which all other conditions evaluate
+                    to true. Instead it indicates that "not satisfied" is the only condition that evaluates to true.
+                  -->
+                  <imsss:ruleConditions conditionCombination="any">
+                    <imsss:ruleCondition referencedObjective="assessment_satisfied" operator="not" condition="satisfied"/>
+                  </imsss:ruleConditions>
+                  
+                  <!--  'Disabled' will cause the SCO to be visible in the course tree, but not accessible via choice or flow.  -->
+                  <imsss:ruleAction action="disabled"/>
+                  
+                </imsss:preConditionRule>
+              </imsss:sequencingRules>
+                <imsss:objectives>
+                  <imsss:primaryObjective objectiveID="course_satisfied"/>
+                </imsss:objectives>
+            </imsss:sequencing>
+          </item>
+
+        <imsss:sequencing>
+          <imsss:rollupRules>
+            <imsss:rollupRule minimumCount=”1″>
+              <imsss:rollupConditions>
+                <imsss:rollupCondition condition=”satisfied”/>
+              </imsss:rollupConditions>
+                <imsss:rollupAction action=”completed”/>
+            </imsss:rollupRule>
+          </imsss:rollupRules>
+       
+        </imsss:sequencing> 
+      </item>
+
 
     </organization>
   </organizations>
-
 
   <resources>
     <resource identifier="__6bbpm48BpJA_course_id_RES" type="webcontent"
@@ -251,18 +202,3 @@ that are common to every item.
           <file href="course/lms/scormdriver.js" />
         </resource>
   </resources>
-
-  <!-- Define a reusable sequencing collection for rules used by all SCOs-->
-  <imsss:sequencingCollection>
-
-    <imsss:sequencing ID="common_seq_rules">
-
-      <!-- This course doesn't rollup a score -->
-      <imsss:rollupRules objectiveMeasureWeight="0"></imsss:rollupRules>
-
-      <!-- Set these values to prevent content from accidently being auto-completed/satisfied-->
-      <imsss:deliveryControls completionSetByContent="true" objectiveSetByContent="true"/>
-
-    </imsss:sequencing>
-  </imsss:sequencingCollection>
-</manifest>
