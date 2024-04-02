@@ -33,10 +33,10 @@ or by completing the entire course and passing the post test.
     <schemaversion>2004 3rd Edition</schemaversion>
   </metadata>
 
-  <organizations default="golf_sample_default_org">
+  <organizations default="Security Essentials - Protecting Data">
 
-    <organization identifier="golf_sample_default_org" adlseq:objectivesGlobalToSystem="false">
-      <title>Golf Explained - Sequencing Pre or Post Test Rollup</title>
+    <organization identifier= "protecting_data_org" adlseq:objectivesGlobalToSystem="false">
+      <title>Security Essentials: Protecting Data</title>
 
       <!--
       Add a dummy wrapper item around all content. Make it invisible so it doesn't
