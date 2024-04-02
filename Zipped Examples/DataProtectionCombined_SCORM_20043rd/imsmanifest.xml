@@ -203,7 +203,7 @@ or by completing the entire course and passing the post test.
             <file href="assess/lms/blank.html"></file>
             <file href="assess/lms/browsersniff.js"></file>
             <file href="assess/lms/goodbye.html"></file>
-            <file href="assess/lms/scormdriver.js"></file>
+            <file href="shared/scormfunctions.js"></file>
         </resource>
         <resource identifier="course_RES" type="webcontent" href="course/index_lms.html" adlcp:scormType="sco">
           <file href="course/story_content/thumbnail.jpg" />
@@ -256,7 +256,9 @@ or by completing the entire course and passing the post test.
           <file href="course/lms/blank.html" />
           <file href="course/lms/browsersniff.js" />
           <file href="course/lms/goodbye.html" />
-          <file href="course/lms/scormdriver.js" />
+          <file href="shared/scormfunctions.js" />
+          <!-- <file href="course/lms/scormdriver.js" /> -->
+        </resource>
         </resource>
   </resources>
 
