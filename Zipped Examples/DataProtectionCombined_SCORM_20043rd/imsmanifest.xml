@@ -1,4 +1,21 @@
-<manifest identifier="data.security.combined.20043rd" version="1"
+<?xml version="1.0" standalone="no" ?>
+<!--
+Sequencing example demonstrating rollup using either a pre-test or a post-test. SCORM 2004 3rd Edition.
+
+Provided by Rustici Software - http://www.scorm.com
+
+Sequencing Strategy:
+
+Free form navigation is allowed. The pre-test can only be attempted one time. Once
+a test is satisfied, both the pre and post tests are disabled. The post test can not
+be attempted until all of the content is completed.
+
+Rollup Strategy:
+The course can only be completed and satisfied either by passing the pretest (testing out)
+or by completing the entire course and passing the post test.
+-->
+
+<manifest identifier="com.scorm.datasecurity.SCORM2004" version="1"
           xmlns="http://www.imsglobal.org/xsd/imscp_v1p1"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_v1p3"
@@ -14,104 +31,140 @@
   <metadata>
     <schema>ADL SCORM</schema>
     <schemaversion>2004 3rd Edition</schemaversion>
-    <!-- this info from Wombat export SCORM 1.2 -->
-    <lom xmlns="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd">
-      <general>
-        <title>
-          <langstring xml:lang="x-none">Security Essentials: Data Protection</langstring>
-        </title>
-      </general>
-      <lifecycle>
-        <version>
-          <langstring xml:lang="x-none">1</langstring>
-        </version>
-        <status>
-          <source>
-            <langstring xml:lang="x-none">LOMv1.0</langstring>
-          </source>
-          <value>
-            <langstring xml:lang="x-none">Final</langstring>
-          </value>
-        </status>
-      </lifecycle>
-      <metametadata>
-        <metadatascheme>ADL SCORM 1.2</metadatascheme>
-      </metametadata>
-      <educational>
-        <typicallearningtime>
-          <datetime>PT0H0M0S</datetime>
-        </typicallearningtime>
-      </educational>
-    </lom>
-
   </metadata>
 
-  <organizations default="Security_Essentials:_Data_Protection_ORG"> 
-    <organization identifier="Security_Essentials:_Data_Protection_ORG" adlseq:objectivesGlobalToSystem="false">
-      <title>Security Essentials: Data Protection MASTER</title>
-      
-      <item identifier="Data Protection" identifierref="course">
-        <title>Data Protection Course</title>
-          
-          <item identifier="Assessment" identifierref="assess_REF">
-            <title>Assessment</title>
-            <imsss:sequencing>
-              <imsss:limitConditions attemptLimit="1"/>
-              <imsss:objectives>
-                <imsss:primaryObjective objectiveID="assessment_satisfied"/ >
-                  <imsss:mapInfo targetObjectiveID = "course_satisfied" readSatisfiedStatus = "true" writeSatisfiedStatus = "true"/>
-                </imsss:primaryObjective>
-              </imsss:objectives>
-            </imsss:sequencing>
-          </item>
+  <organizations default="golf_sample_default_org">
 
-          <item identifier="Course" identifierref="course_RES">
-            <title>Security Essentials: Data Protection</title>
+    <organization identifier="golf_sample_default_org" adlseq:objectivesGlobalToSystem="false">
+      <title>Golf Explained - Sequencing Pre or Post Test Rollup</title>
 
-            <imsss:sequencing>
-              <imsss:sequencingRules>
-                <imsss:preConditionRule>
-                  <!--  
-                    If the previous SCO is not satisfied or the status is unknown, disable this SCO.
-                    Notice that the "not" operator isn't a logical NOT in which all other conditions evaluate
-                    to true. Instead it indicates that "not satisfied" is the only condition that evaluates to true.
-                  -->
-                  <imsss:ruleConditions conditionCombination="any">
-                    <imsss:ruleCondition referencedObjective="assessment_satisfied" operator="not" condition="satisfied"/>
-                  </imsss:ruleConditions>
-                  
-                  <!--  'Disabled' will cause the SCO to be visible in the course tree, but not accessible via choice or flow.  -->
-                  <imsss:ruleAction action="disabled"/>
-                  
-                </imsss:preConditionRule>
-              </imsss:sequencingRules>
-                <imsss:objectives>
-                  <imsss:Objective objectiveID="course_satisfied"/>
-                  <imsss:mapInfo targetObjectiveID = "course_satisfied" 
-                  readSatisfiedStatus = "true" writeSatisfiedStatus = "true"/>
-                </imsss:objectives>
-            </imsss:sequencing>
-          </item>
+      <!--
+      Add a dummy wrapper item around all content. Make it invisible so it doesn't
+      affect the user. Since the top level course has only this one child, the status for the
+      course as a whole will be dependent on this dummy item.
+      -->
+      <item identifier="dummy_item" isvisible="false">
+        <title>Dummy Item</title>
+       
+        <item identifier="assess" identifierref="assessment_RES">
+          <title>Pre Test</title>
 
+          <imsss:sequencing>
+
+            <!--  Rule to disable the pre test after exceeding attempt limit  -->
+            <imsss:sequencingRules>
+              <imsss:preConditionRule>
+                <imsss:ruleConditions>
+                  <imsss:ruleCondition condition="attemptLimitExceeded"/>
+                </imsss:ruleConditions>
+                <imsss:ruleAction action="disabled"/>
+              </imsss:preConditionRule>
+
+            <!-- If any test (pre or post) has been satisfied, disable the tests
+              <imsss:preConditionRule>
+                <imsss:ruleConditions>
+                  <imsss:ruleCondition referencedObjective="assessment_satisfied" condition="satisfied"/>
+                </imsss:ruleConditions>
+                <imsss:ruleAction action="disabled"/>
+              </imsss:preConditionRule> -->
+
+            </imsss:sequencingRules> 
+
+            <!--  The attempt limit ensures that the pre-test is only attempted one time.  -->
+            <imsss:limitConditions attemptLimit="1"/>
+
+            <imsss:objectives>
+              <imsss:primaryObjective objectiveID="assessment_satisfied">
+                <!-- Write the satisfaction status of the pretest to a global objective-->
+                <imsss:mapInfo targetObjectiveID="com.scorm.datasecurity.assessment_satisfied" writeNormalizedMeasure="true" writeSatisfiedStatus="true"/>
+              </imsss:primaryObjective>
+            </imsss:objectives>
+
+            <imsss:deliveryControls completionSetByContent="true" objectiveSetByContent="true"/>
+          </imsss:sequencing>
+        </item>
+
+        <item identifier="course_item" identifierref="course_RES">
+          <title>COURSE TITLE</title>
+          <imsss:sequencing>
+            <imsss:deliveryControls completionSetByContent="true" objectiveSetByContent="true"/>
+          </imsss:sequencing>
+        </item>
+
+        <!-- Additional items -->
+        <!-- <item identifier="etuqiette_item" identifierref="etiquette_resource">
+          <title>Etiquette</title>
+          <imsss:sequencing>
+            <imsss:deliveryControls completionSetByContent="true" objectiveSetByContent="true"/>
+          </imsss:sequencing>
+        </item>
+        <item identifier="handicapping_item" identifierref="handicapping_resource">
+          <title>Handicapping</title>
+          <imsss:sequencing>
+            <imsss:deliveryControls completionSetByContent="true" objectiveSetByContent="true"/>
+          </imsss:sequencing>
+        </item>
+        <item identifier="havingfun_item" identifierref="havingfun_resource">
+          <title>Having Fun</title>
+          <imsss:sequencing>
+            <imsss:deliveryControls completionSetByContent="true" objectiveSetByContent="true"/>
+          </imsss:sequencing>
+        </item> -->
+
+       
+
+        <!-- Sequencing rules for the dummy wrapper item-->
         <imsss:sequencing>
+          <imsss:controlMode choice="true" flow="true"/>
+
+          <!-- 
+          Include some rollup rules so that the dummy aggregation's status will change after the pretest is completed
+          so that rollup proceeds to the top level
+          -->
           <imsss:rollupRules>
-            <imsss:rollupRule minimumCount="1">
+            <imsss:rollupRule childActivitySet="any">
               <imsss:rollupConditions>
-                <imsss:rollupCondition condition="satisfied"/>
+                <imsss:rollupCondition condition="completed"/>
               </imsss:rollupConditions>
-                <imsss:rollupAction action="completed"/>
+              <imsss:rollupAction action="incomplete"/>
+            </imsss:rollupRule>
+            <imsss:rollupRule childActivitySet="all">
+              <imsss:rollupConditions>
+                <imsss:rollupCondition condition="completed"/>
+              </imsss:rollupConditions>
+              <imsss:rollupAction action="completed"/>
             </imsss:rollupRule>
           </imsss:rollupRules>
-       
-        </imsss:sequencing> 
+          
+          <!-- Set up a read map so that this dummy wrapper's satisfaction and measure are pulled from the test global. -->
+          <imsss:objectives>
+            <imsss:primaryObjective objectiveID="assessment_satisfied">
+              <imsss:mapInfo targetObjectiveID="com.scorm.datasecurity.assessment_satisfied" readNormalizedMeasure="true" readSatisfiedStatus="true"/>
+            </imsss:primaryObjective>
+          </imsss:objectives>
+
+        </imsss:sequencing>
       </item>
+      
+      <imsss:sequencing>
 
+        <imsss:controlMode choice="false" flow="true"/>
 
+        <imsss:rollupRules>
+          <imsss:rollupRule childActivitySet="any">
+            <imsss:rollupConditions>
+              <imsss:rollupCondition condition="satisfied"/>
+            </imsss:rollupConditions>
+            <imsss:rollupAction action="completed"/>
+          </imsss:rollupRule>
+        </imsss:rollupRules>
+        
+      </imsss:sequencing>
     </organization>
   </organizations>
-
+ 
   <resources>
-    <resource identifier="assess_RES" type="webcontent"
+    <resource identifier="assessment_RES" type="webcontent"
             href="assess/index_wrapper.html?locale=en-us" adlcp:scormType="sco">
             <file href="assess/story_content/thumbnail.jpg"></file>
             <file href="assess/mobile/6M2qhOGbTuH.png"></file>
@@ -206,4 +259,5 @@
           <file href="course/lms/scormdriver.js" />
         </resource>
   </resources>
+
 </manifest>
