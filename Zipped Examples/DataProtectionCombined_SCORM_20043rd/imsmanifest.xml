@@ -165,7 +165,7 @@ or by completing the entire course and passing the post test.
  
   <resources>
         <resource identifier="assessment_RES" type="webcontent"
-            href="assess/index_wrapper.html?locale=en-us" adlcp:scormType="sco">
+            href="assess/index_lms.html" adlcp:scormType="sco">
             <file href="assess/story_content/thumbnail.jpg"></file>
             <file href="assess/mobile/6M2qhOGbTuH.png"></file>
             <file href="assess/mobile/5vdXdPEWgSl.png"></file>
