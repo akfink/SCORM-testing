@@ -46,7 +46,7 @@ or by completing the entire course and passing the post test.
       <item identifier="dummy_item" isvisible="false">
         <title>Dummy Item</title>
        
-        <item identifier="assess" identifierref="assessment_RES">
+        <item identifier="assess" identifierref="__6bbpm48BpJA_course_id_RES">
           <title>Pre Test</title>
 
           <imsss:sequencing>
@@ -84,7 +84,7 @@ or by completing the entire course and passing the post test.
           </imsss:sequencing>
         </item>
 
-        <item identifier="course_item" identifierref="course_RES">
+        <item identifier="__6bbpm48BpJA_course_id" identifierref="__6bbpm48BpJA_course_id_RES">
           <title>COURSE TITLE</title>
           <imsss:sequencing>
             <imsss:deliveryControls completionSetByContent="true" objectiveSetByContent="true"/>
