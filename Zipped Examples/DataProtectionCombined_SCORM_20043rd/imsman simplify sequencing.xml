@@ -1,0 +1,265 @@
+<?xml version="1.0" standalone="no" ?>
+<!--
+Sequencing example demonstrating rollup using either a pre-test or a post-test. SCORM 2004 3rd Edition.
+
+Provided by Rustici Software - http://www.scorm.com
+
+Sequencing Strategy:
+
+Free form navigation is allowed. The pre-test can only be attempted one time. Once
+a test is satisfied, both the pre and post tests are disabled. The post test can not
+be attempted until all of the content is completed.
+
+Rollup Strategy:
+The course can only be completed and satisfied either by passing the pretest (testing out)
+or by completing the entire course and passing the post test.
+-->
+
+<manifest identifier="com.scorm.datasecurity.SCORM2004" version="1"
+          xmlns="http://www.imsglobal.org/xsd/imscp_v1p1"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_v1p3"
+          xmlns:adlseq="http://www.adlnet.org/xsd/adlseq_v1p3"
+          xmlns:adlnav="http://www.adlnet.org/xsd/adlnav_v1p3"
+          xmlns:imsss="http://www.imsglobal.org/xsd/imsss"
+          xsi:schemaLocation="http://www.imsglobal.org/xsd/imscp_v1p1 imscp_v1p1.xsd
+                              http://www.adlnet.org/xsd/adlcp_v1p3 adlcp_v1p3.xsd
+                              http://www.adlnet.org/xsd/adlseq_v1p3 adlseq_v1p3.xsd
+                              http://www.adlnet.org/xsd/adlnav_v1p3 adlnav_v1p3.xsd
+                              http://www.imsglobal.org/xsd/imsss imsss_v1p0.xsd">
+
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>2004 3rd Edition</schemaversion>
+  </metadata>
+
+  <organizations default="protecting_data_org">
+
+    <organization identifier= "protecting_data_org" adlseq:objectivesGlobalToSystem="false">
+      <title>Security Essentials: Protecting Data</title>
+
+      <!--
+      Add a dummy wrapper item around all content. Make it invisible so it doesn't
+      affect the user. Since the top level course has only this one child, the status for the
+      course as a whole will be dependent on this dummy item.
+      -->
+      <item identifier="dummy_item" isvisible="false">
+        <title>Dummy Item</title>
+       
+        <item identifier="assessment" identifierref="assessment_RES">
+          <title>Pre Test</title>
+
+          <imsss:sequencing>
+
+            <!--  Rule to disable the pre test after exceeding attempt limit  -->
+            <imsss:sequencingRules>
+              <imsss:preConditionRule>
+                <imsss:ruleConditions>
+                  <imsss:ruleCondition condition="attemptLimitExceeded"/>
+                </imsss:ruleConditions>
+                <imsss:ruleAction action="disabled"/>
+              </imsss:preConditionRule>
+
+            <!-- If any test (pre or post) has been satisfied, disable the tests
+              <imsss:preConditionRule>
+                <imsss:ruleConditions>
+                  <imsss:ruleCondition referencedObjective="assessment_satisfied" condition="satisfied"/>
+                </imsss:ruleConditions>
+                <imsss:ruleAction action="disabled"/>
+              </imsss:preConditionRule> -->
+
+            </imsss:sequencingRules> 
+
+            <!--  The attempt limit ensures that the pre-test is only attempted one time.  -->
+            <imsss:limitConditions attemptLimit="1"/>
+
+            <imsss:objectives>
+              <imsss:primaryObjective objectiveID="assessment_satisfied">
+                <!-- Write the satisfaction status of the pretest to a global objective-->
+                <imsss:mapInfo targetObjectiveID="com.scorm.datasecurity.assessment_satisfied" writeNormalizedMeasure="true" writeSatisfiedStatus="true"/>
+              </imsss:primaryObjective>
+            </imsss:objectives>
+
+            <imsss:deliveryControls completionSetByContent="true" objectiveSetByContent="true"/>
+          </imsss:sequencing>
+        </item>
+
+        <item identifier="course" identifierref="course_RES">
+          <title>COURSE TITLE</title>
+          <imsss:sequencing>
+            <imsss:deliveryControls completionSetByContent="true" objectiveSetByContent="true"/>
+          </imsss:sequencing>
+        </item>
+
+        <!-- Additional items -->
+        <!-- <item identifier="etuqiette_item" identifierref="etiquette_resource">
+          <title>Etiquette</title>
+          <imsss:sequencing>
+            <imsss:deliveryControls completionSetByContent="true" objectiveSetByContent="true"/>
+          </imsss:sequencing>
+        </item>
+        <item identifier="handicapping_item" identifierref="handicapping_resource">
+          <title>Handicapping</title>
+          <imsss:sequencing>
+            <imsss:deliveryControls completionSetByContent="true" objectiveSetByContent="true"/>
+          </imsss:sequencing>
+        </item>
+        <item identifier="havingfun_item" identifierref="havingfun_resource">
+          <title>Having Fun</title>
+          <imsss:sequencing>
+            <imsss:deliveryControls completionSetByContent="true" objectiveSetByContent="true"/>
+          </imsss:sequencing>
+        </item> -->
+
+       
+
+        <!-- Sequencing rules for the dummy wrapper item-->
+        <imsss:sequencing>
+          <imsss:controlMode choice="true" flow="true"/>
+
+          <!-- 
+          Include some rollup rules so that the dummy aggregation's status will change after the pretest is completed
+          so that rollup proceeds to the top level
+          -->
+          <imsss:rollupRules>
+            <imsss:rollupRule childActivitySet="any">
+              <imsss:rollupConditions>
+                <imsss:rollupCondition condition="completed"/>
+              </imsss:rollupConditions>
+              <imsss:rollupAction action="incomplete"/>
+            </imsss:rollupRule>
+            <imsss:rollupRule childActivitySet="all">
+              <imsss:rollupConditions>
+                <imsss:rollupCondition condition="completed"/>
+              </imsss:rollupConditions>
+              <imsss:rollupAction action="completed"/>
+            </imsss:rollupRule>
+          </imsss:rollupRules>
+          
+          <!-- Set up a read map so that this dummy wrapper's satisfaction and measure are pulled from the test global. -->
+          <imsss:objectives>
+            <imsss:primaryObjective objectiveID="assessment_satisfied">
+              <imsss:mapInfo targetObjectiveID="com.scorm.datasecurity.assessment_satisfied" readNormalizedMeasure="true" readSatisfiedStatus="true"/>
+            </imsss:primaryObjective>
+          </imsss:objectives>
+
+        </imsss:sequencing>
+      </item>
+      
+      <imsss:sequencing>
+
+        <imsss:controlMode choice="false" flow="true"/>
+
+        <imsss:rollupRules>
+          <imsss:rollupRule childActivitySet="any">
+            <imsss:rollupConditions>
+              <imsss:rollupCondition condition="satisfied"/>
+            </imsss:rollupConditions>
+            <imsss:rollupAction action="completed"/>
+          </imsss:rollupRule>
+        </imsss:rollupRules>
+        
+      </imsss:sequencing>
+    </organization>
+  </organizations>
+ 
+  <resources>
+        <resource identifier="assessment_RES" type="webcontent"
+            href="assess/story.html" adlcp:scormType="sco">
+            <file href="assess/story_content/thumbnail.jpg"></file>
+            <file href="assess/mobile/6M2qhOGbTuH.png"></file>
+            <file href="assess/mobile/5vdXdPEWgSl.png"></file>
+            <file href="assess/mobile/6f6eOjOx65g.png"></file>
+            <file href="assess/mobile/6JpIfjav2dY.png"></file>
+            <file href="assess/mobile/6dMxWmvXgDW.png"></file>
+            <file href="assess/mobile/69Yp5c92rse.png"></file>
+            <file href="assess/meta.xml"></file>
+            <file href="assess/story_content/user.js"></file>
+            <file href="assess/html5/data/css/output.min.css"></file>
+            <file href="assess/html5/data/js/5nWNv1LOR7K.js"></file>
+            <file href="assess/html5/data/js/5WoyNYbY4K6.js"></file>
+            <file href="assess/html5/data/js/690H0HfT8rt.js"></file>
+            <file href="assess/html5/data/js/6Ful7R0Kv2l.js"></file>
+            <file href="assess/html5/data/js/6nK206Q5fEP.js"></file>
+            <file href="assess/html5/data/js/6WoUg9qD2nT.js"></file>
+            <file href="assess/html5/data/js/6Z6GH34HuIr.js"></file>
+            <file href="assess/html5/data/js/data.js"></file>
+            <file href="assess/html5/data/js/frame.js"></file>
+            <file href="assess/html5/data/js/paths.js"></file>
+            <file href="assess/html5/lib/hls/hls.min.js"></file>
+            <file href="assess/html5/lib/scripts/bootstrapper.min.js"></file>
+            <file href="assess/html5/lib/scripts/frame.desktop.min.js"></file>
+            <file href="assess/html5/lib/scripts/frame.mobile.min.js"></file>
+            <file href="assess/html5/lib/scripts/slides.min.js"></file>
+            <file href="assess/html5/lib/stylesheets/desktop.min.css"></file>
+            <file href="assess/html5/lib/stylesheets/mobile.min.css"></file>
+            <file href="assess/html5/lib/stylesheets/mobile-fonts/open-sans-bold.woff"></file>
+            <file href="assess/html5/lib/stylesheets/mobile-fonts/open-sans-light.woff"></file>
+            <file href="assess/html5/lib/stylesheets/mobile-fonts/open-sans-regular.woff"></file>
+            <file href="assess/analytics-frame.html"></file>
+            <file href="assess/story.html"></file>
+            <file href="assess/index_lms.html"></file>
+            <file href="assess/lms/AICCComm.html"></file>
+            <file href="assess/lms/blank.html"></file>
+            <file href="assess/lms/browsersniff.js"></file>
+            <file href="assess/lms/goodbye.html"></file>
+            <file href="shared/scormfunctions.js"></file>
+        </resource>
+    
+        <resource identifier="course_RES" type="webcontent" href="course/index_lms.html" adlcp:scormType="sco">
+          <file href="course/story_content/thumbnail.jpg" />
+          <file href="course/mobile/6JpIfjav2dY.png" />
+          <file href="course/mobile/6DGNDbF2sAV.png" />
+          <file href="course/mobile/6FIQb2XWiwW.png" />
+          <file href="course/mobile/6OInzl4rvju.png" />
+          <file href="course/mobile/6XFyISSlAbP.png" />
+          <file href="course/mobile/5sJAur0HufA.png" />
+          <file href="course/mobile/6f6eOjOx65g.png" />
+          <file href="course/mobile/5rKS34d9sPm.png" />
+          <file href="course/mobile/69Yp5c92rse.png" />
+          <file href="course/mobile/5lSBBCI6xuP_M_82_82.png" />
+          <file href="course/mobile/6OwrkgDQLBD_M_92_92.png" />
+          <file href="course/mobile/5hf5cYGjGe7.png" />
+          <file href="course/mobile/6kiUeNdO19Q_M_172_172.png" />
+          <file href="course/mobile/6R9jN68Da0y.png" />
+          <file href="course/mobile/5oCKRLG9P4Y.png" />
+          <file href="course/mobile/6WA6xIVFutj.png" />
+          <file href="course/mobile/6bV46hdct5Y.png" />
+          <file href="course/meta.xml" />
+          <file href="course/story_content/user.js" />
+          <file href="course/html5/data/css/output.min.css" />
+          <file href="course/html5/data/js/5fD7xN9RwnY.js" />
+          <file href="course/html5/data/js/5gtSq5v1GMY.js" />
+          <file href="course/html5/data/js/66l8q33Zejj.js" />
+          <file href="course/html5/data/js/6bumMfaUZPr.js" />
+          <file href="course/html5/data/js/6c6Em3kXQDP.js" />
+          <file href="course/html5/data/js/6cMkwKOzMzX.js" />
+          <file href="course/html5/data/js/6LEja8iJiDn.js" />
+          <file href="course/html5/data/js/6NIt5J36wVJ.js" />
+          <file href="course/html5/data/js/6O5TcjFNWmi.js" />
+          <file href="course/html5/data/js/data.js" />
+          <file href="course/html5/data/js/frame.js" />
+          <file href="course/html5/data/js/paths.js" />
+          <file href="course/html5/lib/hls/hls.min.js" />
+          <file href="course/html5/lib/scripts/bootstrapper.min.js" />
+          <file href="course/html5/lib/scripts/frame.desktop.min.js" />
+          <file href="course/html5/lib/scripts/frame.mobile.min.js" />
+          <file href="course/html5/lib/scripts/slides.min.js" />
+          <file href="course/html5/lib/stylesheets/desktop.min.css" />
+          <file href="course/html5/lib/stylesheets/mobile.min.css" />
+          <file href="course/html5/lib/stylesheets/mobile-fonts/open-sans-bold.woff" />
+          <file href="course/html5/lib/stylesheets/mobile-fonts/open-sans-light.woff" />
+          <file href="course/html5/lib/stylesheets/mobile-fonts/open-sans-regular.woff" />
+          <file href="course/analytics-frame.html" />
+          <file href="course/story.html" />
+          <file href="course/index_lms.html" />
+          <file href="course/lms/AICCComm.html" />
+          <file href="course/lms/blank.html" />
+          <file href="course/lms/browsersniff.js" />
+          <file href="course/lms/goodbye.html" />
+          <file href="shared/scormfunctions.js" />
+          <!-- <file href="course/lms/scormdriver.js" /> -->
+        </resource>
+  </resources>
+
+</manifest>
