@@ -121,7 +121,7 @@ or by completing the entire course and passing the post test.
               <imsss:rollupConditions>
                 <imsss:rollupCondition condition="completed"/>
               </imsss:rollupConditions>
-              <imsss:rollupAction action="incomplete"/>
+              <imsss:rollupAction action="completed"/>
             </imsss:rollupRule>
             <imsss:rollupRule childActivitySet="all">
               <imsss:rollupConditions>
@@ -133,8 +133,8 @@ or by completing the entire course and passing the post test.
           
           <!-- Set up a read map so that this dummy wrapper's satisfaction and measure are pulled from the test global. -->
           <imsss:objectives>
-            <imsss:primaryObjective objectiveID="assessment_satisfied">
-              <imsss:mapInfo targetObjectiveID="content_complete" readNormalizedMeasure="true" readSatisfiedStatus="true"/>
+            <imsss:primaryObjective objectiveID="dummy_satisfied">
+              <imsss:mapInfo targetObjectiveID="content_complete" readSatisfiedStatus="true"/>
             </imsss:primaryObjective>
           </imsss:objectives>
 
@@ -143,7 +143,7 @@ or by completing the entire course and passing the post test.
       
       <imsss:sequencing>
 
-        <imsss:controlMode choice="false" flow="true"/>
+        <imsss:controlMode choice="false" flow="true" forwardOnly="true"/>
 
         <imsss:rollupRules>
           <imsss:rollupRule childActivitySet="any">
