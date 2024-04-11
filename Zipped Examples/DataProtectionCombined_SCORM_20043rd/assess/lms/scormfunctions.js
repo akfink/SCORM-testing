@@ -52,7 +52,7 @@ function ScanForAPI(win)
 // provided API Instance.  The function takes in a parameter that
 // represents the current window.  The function is built to search in a
 // specific order and stop when the LMS provided API Instance is found.
-// The function begins by searching the current window’s parent, if the
+// The function begins by searching the current windowï¿½s parent, if the
 // current window has a parent.  If the API Instance is not found, the
 // function then checks to see if there are any opener windows.  If
 // the window has an opener, the function begins to look for the
