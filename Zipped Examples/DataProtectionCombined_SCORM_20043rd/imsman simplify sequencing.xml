@@ -67,16 +67,16 @@ or by completing the entire course and passing the post test.
                 </imsss:ruleConditions>
                 <imsss:ruleAction action="disabled"/>
               </imsss:preConditionRule> -->
-
             </imsss:sequencingRules> 
 
             <!--  The attempt limit ensures that the pre-test is only attempted one time.  -->
             <imsss:limitConditions attemptLimit="1"/>
 
             <imsss:objectives>
+              <!-- primaryObj is THIS ITEMS individual objective -->
               <imsss:primaryObjective objectiveID="assessment_satisfied">
                 <!-- Write the satisfaction status of the pretest to a global objective-->
-                <imsss:mapInfo targetObjectiveID="com.scorm.datasecurity.assessment_satisfied" writeNormalizedMeasure="true" writeSatisfiedStatus="true"/>
+                <imsss:mapInfo targetObjectiveID="content_complete" writeSatisfiedStatus="true"/>
               </imsss:primaryObjective>
             </imsss:objectives>
 
@@ -87,35 +87,30 @@ or by completing the entire course and passing the post test.
         <item identifier="course" identifierref="course_RES">
           <title>COURSE TITLE</title>
           <imsss:sequencing>
+            <imsss:sequencingRules>
+              <imsss:preConditionRule>
+                <imsss:ruleConditions>
+                  <imsss:ruleCondition referencedObjective="assessment_satisfied" condition ="satisfied" />
+                </imsss:ruleConditions>
+                <imsss:ruleAction action="skip" />
+              </imsss:preConditionRule>
+            </imsss:sequencingRules>
+            <imsss:objectives>
+              <!-- primaryObj is THIS ITEMS individual objective -->
+              <imsss:primaryObjective objectiveID="course_satisfied">
+                <!-- Write the satisfaction status of the pretest to a global objective-->
+                <imsss:mapInfo targetObjectiveID="content_complete" writeSatisfiedStatus="true"/>
+              </imsss:primaryObjective>
+            </imsss:objectives>
             <imsss:deliveryControls completionSetByContent="true" objectiveSetByContent="true"/>
           </imsss:sequencing>
         </item>
-
-        <!-- Additional items -->
-        <!-- <item identifier="etuqiette_item" identifierref="etiquette_resource">
-          <title>Etiquette</title>
-          <imsss:sequencing>
-            <imsss:deliveryControls completionSetByContent="true" objectiveSetByContent="true"/>
-          </imsss:sequencing>
-        </item>
-        <item identifier="handicapping_item" identifierref="handicapping_resource">
-          <title>Handicapping</title>
-          <imsss:sequencing>
-            <imsss:deliveryControls completionSetByContent="true" objectiveSetByContent="true"/>
-          </imsss:sequencing>
-        </item>
-        <item identifier="havingfun_item" identifierref="havingfun_resource">
-          <title>Having Fun</title>
-          <imsss:sequencing>
-            <imsss:deliveryControls completionSetByContent="true" objectiveSetByContent="true"/>
-          </imsss:sequencing>
-        </item> -->
 
        
 
         <!-- Sequencing rules for the dummy wrapper item-->
         <imsss:sequencing>
-          <imsss:controlMode choice="true" flow="true"/>
+          <imsss:controlMode choice="false" flow="true"/>
 
           <!-- 
           Include some rollup rules so that the dummy aggregation's status will change after the pretest is completed
@@ -139,7 +134,7 @@ or by completing the entire course and passing the post test.
           <!-- Set up a read map so that this dummy wrapper's satisfaction and measure are pulled from the test global. -->
           <imsss:objectives>
             <imsss:primaryObjective objectiveID="assessment_satisfied">
-              <imsss:mapInfo targetObjectiveID="com.scorm.datasecurity.assessment_satisfied" readNormalizedMeasure="true" readSatisfiedStatus="true"/>
+              <imsss:mapInfo targetObjectiveID="content_complete" readNormalizedMeasure="true" readSatisfiedStatus="true"/>
             </imsss:primaryObjective>
           </imsss:objectives>
 
