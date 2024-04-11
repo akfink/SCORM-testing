@@ -35,7 +35,7 @@ or by completing the entire course and passing the post test.
 
   <organizations default="protecting_data_org">
 
-    <organization identifier= "protecting_data_org" adlseq:objectivesGlobalToSystem="false">
+    <organization identifier= "protecting_data_org" adlseq:objectivesGlobalToSystem="true">
       <title>Security Essentials: Protecting Data</title>
 
       <!--
@@ -43,7 +43,7 @@ or by completing the entire course and passing the post test.
       affect the user. Since the top level course has only this one child, the status for the
       course as a whole will be dependent on this dummy item.
       -->
-      <item identifier="dummy_item" isvisible="false">
+      <item identifier="dummy_item" isvisible="true">
         <title>Dummy Item</title>
        
         <item identifier="assessment" identifierref="assessment_RES">
