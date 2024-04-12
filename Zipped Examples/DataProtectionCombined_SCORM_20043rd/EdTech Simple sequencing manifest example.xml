@@ -1,0 +1,67 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<manifest xmlns = "http://www.imsglobal.org/xsd/imscp_v1p1" 
+      xmlns:imsss = "http://www.imsglobal.org/xsd/imsss"
+      xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" 
+      xsi:schemaLocation = "http://www.imsglobal.org/xsd/imsss Schemas/imsss_v1p0.xsd 
+         http://www.imsglobal.org/xsd/imscp_v1p1 Schemas/imscp_v1p1p3.xsd" 
+      identifier = "BBT_TLCExamplePostTest">
+<!-- This manifest contains a solution to the following ID Problem:
+ * Deliver content, then post-test
+ * If student doesn't pass the post-test, deliver remediation, then repeat the content and post-test
+-->
+      <organizations>
+         <organization identifier = "Organization">
+            <item identifier = "Unit">
+                <!-- container -->
+               <item identifier = "Content"/>
+               <!-- Assume this is collapsed for demo purposes -->
+               
+               <item identifier = "Posttest">
+                  <imsss:sequencing>
+                     <imsss:objectives>
+                        <imsss:primaryObjective objectiveID = "posttest1" satisfiedByMeasure = "true">
+                           <imsss:mapInfo targetObjectiveID = "content1" readSatisfiedStatus = "true"/>
+                        </imsss:primaryObjective>
+                     </imsss:objectives>
+                  </imsss:sequencing>
+               </item>
+
+               <item identifier = "Remediation">
+                <!-- Lookback if failed test -->
+                  <imsss:sequencing>
+                     <imsss:sequencingRules>
+                        <imsss:preConditionRule>
+                           <imsss:ruleConditions>
+                              <imsss:ruleCondition condition = "satisfied"/>
+                           </imsss:ruleConditions>
+                           <imsss:ruleAction action = "skip"/>
+                        </imsss:preConditionRule>
+                     </imsss:sequencingRules>
+                     <imsss:objectives>
+                        <imsss:primaryObjective objectiveID = "remediation1">
+                           <imsss:mapInfo targetObjectiveID = "content1" readSatisfiedStatus = "true"/>
+                        </imsss:primaryObjective>
+                     </imsss:objectives>
+                  </imsss:sequencing>
+               </item>
+               <imsss:sequencing>
+                  <imsss:controlMode choice = "false" flow = "true" forwardOnly = "true"/>
+                  <imsss:sequencingRules>
+                     <imsss:postConditionRule>
+                        <imsss:ruleConditions>
+                           <imsss:ruleCondition condition = "satisfied" operator = "not"/>
+                        </imsss:ruleConditions>
+                        <imsss:ruleAction action = "retry"/>
+                     </imsss:postConditionRule>
+                  </imsss:sequencingRules>
+                  <imsss:objectives>
+                     <imsss:primaryObjective objectiveID = "unit1">
+                        <imsss:mapInfo targetObjectiveID="content1" readSatisfiedStatus= "true"/>
+                     </imsss:primaryObjective>
+                  </imsss:objectives>
+               </imsss:sequencing>
+            </item>
+         </organization>
+      </organizations>
+      <resources/>
+</manifest>
