@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest identifier="_6bbpm48BpJA_course_id" version="1.0"
-    xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
-    xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd
-                        http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd
-                        http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+<manifest identifier="_6bbpm48BpJA_course_id" version="1.3"
+        xmlns="http://www.imsglobal.org/xsd/imscp_v1p1" 
+        xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_v1p3" 
+        xmlns:adlseq="http://www.adlnet.org/xsd/adlseq_v1p3" 
+        xmlns:adlnav="http://www.adlnet.org/xsd/adlnav_v1p3" 
+        xmlns:imsss="http://www.imsglobal.org/xsd/imsss" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:schemaLocation="http://www.imsglobal.org/xsd/imscp_v1p1 imscp_v1p1.xsd
+                            http://www.adlnet.org/xsd/adlcp_v1p3 adlcp_v1p3.xsd
+                            http://www.adlnet.org/xsd/adlseq_v1p3 adlseq_v1p3.xsd
+                            http://www.adlnet.org/xsd/adlnav_v1p3 adlnav_v1p3.xsd
+                            http://www.imsglobal.org/xsd/imsss imsss_v1p0.xsd">
     <metadata>
         <schema>ADL SCORM</schema>
         <schemaversion>CAM 1.3</schemaversion>
         <adlcp:location>metadata.xml</adlcp:location>
+        <!-- MIGRATED TO SEPARATE METADATA.XML FILE -->
         <!-- <lom xmlns="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd">
@@ -66,7 +72,7 @@
             </organization>
     </organizations>
     <resources>
-        <resource identifier="__6bbpm48BpJA_course_id_RES" type="webcontent" href="index_wrapper.html" adlcp:scormtype="sco">
+        <resource identifier="__6bbpm48BpJA_course_id_RES" type="webcontent" href="index_wrapper.html" adlcp:scormType="sco">
             <file href="story_content/thumbnail.jpg"></file>
             <file href="mobile/6M2qhOGbTuH.png"></file>
             <file href="mobile/5vdXdPEWgSl.png"></file>
