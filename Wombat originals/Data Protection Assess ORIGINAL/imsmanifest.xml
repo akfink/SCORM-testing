@@ -72,7 +72,7 @@
             </organization>
     </organizations>
     <resources>
-        <resource identifier="__6bbpm48BpJA_course_id_RES" type="webcontent" href="index.html" adlcp:scormType="sco">
+        <resource identifier="__6bbpm48BpJA_course_id_RES" type="webcontent" href="index_lms.html" adlcp:scormType="sco">
             <file href="story_content/thumbnail.jpg"></file>
             <file href="mobile/6M2qhOGbTuH.png"></file>
             <file href="mobile/5vdXdPEWgSl.png"></file>
