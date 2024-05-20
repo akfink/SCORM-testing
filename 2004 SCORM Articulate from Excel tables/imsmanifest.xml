@@ -1,18 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<manifest identifier="_6Oo6N1utx0V" version="1.3" xmlns="http://www.imsglobal.org/xsd/imscp_v1p1" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_v1p3" xmlns:adlseq="http://www.adlnet.org/xsd/adlseq_v1p3" xmlns:adlnav="http://www.adlnet.org/xsd/adlnav_v1p3" xmlns:imsss="http://www.imsglobal.org/xsd/imsss" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imscp_v1p1 imscp_v1p1.xsd
-                        http://www.adlnet.org/xsd/adlcp_v1p3 adlcp_v1p3.xsd
-                        http://www.adlnet.org/xsd/adlseq_v1p3 adlseq_v1p3.xsd
-                        http://www.adlnet.org/xsd/adlnav_v1p3 adlnav_v1p3.xsd
-                        http://www.imsglobal.org/xsd/imsss imsss_v1p0.xsd">
+<manifest identifier="_6Oo6N1utx0V" version="1.3" xmlns="http://www.imsglobal.org/xsd/imscp_v1p1"
+  xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_v1p3"
+  xmlns:adlseq="http://www.adlnet.org/xsd/adlseq_v1p3"
+  xmlns:adlnav="http://www.adlnet.org/xsd/adlnav_v1p3"
+  xmlns:imsss="http://www.imsglobal.org/xsd/imsss"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.imsglobal.org/xsd/imscp_v1p1 imscp_v1p1.xsd
+                      http://www.adlnet.org/xsd/adlcp_v1p3 adlcp_v1p3.xsd
+                      http://www.adlnet.org/xsd/adlseq_v1p3 adlseq_v1p3.xsd
+                      http://www.adlnet.org/xsd/adlnav_v1p3 adlnav_v1p3.xsd
+                      http://www.imsglobal.org/xsd/imsss imsss_v1p0.xsd">
   <metadata>
     <schema>ADL SCORM</schema>
     <schemaversion>CAM 1.3</schemaversion>
     <adlcp:location>metadata.xml</adlcp:location>
   </metadata>
   <organizations default="UP_YOUR_GAME:_Excel_Tables_ORG">
-    <organization identifier="UP_YOUR_GAME:_Excel_Tables_ORG" adlseq:objectivesGlobalToSystem="false">
+    <organization identifier="UP_YOUR_GAME:_Excel_Tables_ORG"
+      adlseq:objectivesGlobalToSystem="false">
       <title>UP YOUR GAME: Excel Tables</title>
-      <item identifier="Excel_Tables_UP_YOUR_GAME_SCO" identifierref="__6Oo6N1utx0V_RES" isvisible="true">
+      <item identifier="Excel_Tables_UP_YOUR_GAME_SCO" identifierref="__6Oo6N1utx0V_RES"
+        isvisible="true">
         <title>UP YOUR GAME: Excel Tables</title>
       </item>
       <metadata>
@@ -20,12 +28,14 @@
       </metadata>
       <imsss:sequencing>
         <imsss:controlMode choice="true" flow="true" />
-        <imsss:deliveryControls tracked="true" completionSetByContent="false" objectiveSetByContent="false" />
+        <imsss:deliveryControls tracked="true" completionSetByContent="false"
+          objectiveSetByContent="false" />
       </imsss:sequencing>
     </organization>
   </organizations>
   <resources>
-    <resource identifier="__6Oo6N1utx0V_RES" type="webcontent" adlcp:scormType="sco" href="index_lms.html">
+    <resource identifier="__6Oo6N1utx0V_RES" type="webcontent" adlcp:scormType="sco"
+      href="index_lms.html">
       <file href="story_content/thumbnail.jpg" />
       <file href="story_content/5tkiesW4nBQ.js" />
       <file href="mobile/5WjYJ76uWUy.png" />

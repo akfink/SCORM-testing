@@ -60,7 +60,7 @@
             <item identifier="The_Problem_with_Public_Wi-Fi_Assessment_SCO" isvisible="true"
                 identifierref="__6bbpm48BpJA_course_id_RES">
                 <title>Security Essentials: Data Protection Adaptive Learning Assessment</title>
-                <adlcp:masteryscore>80</adlcp:masteryscore>
+            
             </item>
             <metadata>
                 <adlcp:location>metadata.xml</adlcp:location>
