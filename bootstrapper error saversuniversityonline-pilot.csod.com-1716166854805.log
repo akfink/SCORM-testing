@@ -1,0 +1,46 @@
+scormdriver.js:5749  Uncaught (in promise) TypeError: SCORM_objAPI.LMSInitialize is not a function
+    at SCORM_CallLMSInitialize (scormdriver.js:5749:30)
+    at LMSStandardAPI.SCORM_Initialize [as Initialize] (scormdriver.js:4143:17)
+    at Start (scormdriver.js:31753:16)
+    at Object.startWindow (bootstrapper.min.js:2:195373)
+    at Object.initialize (bootstrapper.min.js:2:195100)
+    at Object.initLms (bootstrapper.min.js:2:201999)
+    at Object.initialize (bootstrapper.min.js:2:201115)
+    at Object.initialize (bootstrapper.min.js:2:277491)
+    at N (slides.min.js:17:24127)
+    at slides.min.js:17:25284
+SCORM_CallLMSInitialize @ scormdriver.js:5749
+SCORM_Initialize @ scormdriver.js:4143
+Start @ scormdriver.js:31753
+startWindow @ bootstrapper.min.js:2
+initialize @ bootstrapper.min.js:2
+initLms @ bootstrapper.min.js:2
+initialize @ bootstrapper.min.js:2
+initialize @ bootstrapper.min.js:2
+N @ slides.min.js:17
+(anonymous) @ slides.min.js:17
+Promise.catch (async)
+(anonymous) @ slides.min.js:17
+(anonymous) @ bootstrapper.min.js:2
+resolve @ bootstrapper.min.js:2
+(anonymous) @ bootstrapper.min.js:2
+(anonymous) @ bootstrapper.min.js:2
+resolve @ bootstrapper.min.js:2
+(anonymous) @ bootstrapper.min.js:2
+Promise.then (async)
+scriptSync @ bootstrapper.min.js:2
+sync @ bootstrapper.min.js:2
+sync @ bootstrapper.min.js:29
+fetch @ bootstrapper.min.js:29
+(anonymous) @ slides.min.js:17
+(anonymous) @ slides.min.js:17
+Promise.then (async)
+(anonymous) @ slides.min.js:17
+(anonymous) @ slides.min.js:17
+Promise.then (async)
+(anonymous) @ slides.min.js:17
+(anonymous) @ slides.min.js:17
+Promise.then (async)
+(anonymous) @ slides.min.js:17
+(anonymous) @ slides.min.js:17
+(anonymous) @ slides.min.js:17
